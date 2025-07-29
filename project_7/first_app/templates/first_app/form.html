@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% block content %}
+
+
+<div style="width: 50%; height: 500px; margin: auto" class="pt-5">
+
+    <h3> Movie rating form </h3>
+    {% comment %} <form method = 'post' action = "/about/"> {% endcomment %}
+    <form method = 'get'>
+     {% csrf_token %}
+  <div class="form-group">
+    <label for="exampleInputName">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="exampleInputName"
+      aria-describedby="namelHelp" name = 'username'
+      placeholder=" "
+    />
+    
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input
+      type="email"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp" name = 'email'
+      placeholder="Enter email"
+    />
+
+      </div>
+
+    <select class="form-select" aria-label="Default select example" name='select'>
+  <option selected>Rating</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+  <option value="4">four</option>
+  <option value="5">five</option>
+</select>
+    
+
+
+ 
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+</div>
+
+
+
+
+{% endblock %}
