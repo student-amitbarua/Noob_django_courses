@@ -14,7 +14,7 @@ def signup(request):
          if request.method == 'POST':
             form = RegisterForm(request.POST)
             if form.is_valid():
-             messages.success(request, 'Account created Successfuly')
+             messages.success(request, 'Account created Successfully')
                  #  messages.warning(request, 'warning')
                  #  messages.info(request, 'info')
          
@@ -110,7 +110,7 @@ def pass_change2(request):
         if form.is_valid():
           form.save()
           update_session_auth_hash(request, form.user) #password update korve
-          return redirect('profil e')
+          return redirect('profile')
 
       else: 
         form = SetPasswordForm(user=request.user)
