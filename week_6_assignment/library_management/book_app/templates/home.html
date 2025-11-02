@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="d-flex flex-wrap px-5 pt-3 align-items-center">
+
+  <div class="col-6 text-white" >
+
+    <h1>Welcome to reader inside </h1>
+    <p>In a world brimming with information, your story is the one that truly matters. At our core, we believe that every voice deserves to be heard, every passion shared, and every idea explored. This is more than just a blog site; it's a community built on curiosity and connection, a space where we dive deep into the subjects that fascinate us, from the latest tech trends to the timeless beauty of art and literature. Whether you're here to find inspiration, share your expertise, or simply to lose yourself in a well-told tale, we invite you to join our journey. Welcome to a place where words come to life and every post sparks a new conversation.</p>
+
+
+
+  </div>
+  <div class="col-6">
+    <img src="{% static 'home.jpg' %}" />
+  </div>
+
+</div>
+
+<div class="d-flex flex-wrap p-4">
+  <div class="col-2 bg-white p-3">
+    <h5>All Categories </h5>
+    {% for cat in category %}
+
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="category"
+        id="{{cat.id}}"
+      />
+      <label class="form-check-label" for="{{cat.id}}"> 
+
+        <a href="{% url 'Category_wise_book' cat.slug %}" class=" text-decoration-none text-dark">{{cat.name}}</a>
+      </label>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="col-10 p-3">
+    <h4 class="text-warning">{{data | length}} results found</h4>
+    <div class="d-flex flex-wrap pt-5">
+      {% for books in book %}
+
+      <div class="col-sm-3">
+        <div class="card mx-1">
+          <div class="card-body">
+            <img src="{{books.image.url}}" class="card-img-top" alt="">
+            <h5 class="card-title">{{books.title}}</a></h5>
+            <p class="card-text">{{books.description |truncatewords:10}}</p>
+            
+            <a href="{% url 'book_details' books.id %}" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}
